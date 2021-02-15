@@ -1,4 +1,4 @@
-package ui.view;
+package domain.model;
 
 public class Student {
     private String naam, voornaam;
