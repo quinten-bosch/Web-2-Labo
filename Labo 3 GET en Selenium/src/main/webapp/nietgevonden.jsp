@@ -1,8 +1,8 @@
-<%@ page import="domain.model.Student" %><%--
+<%--
   Created by IntelliJ IDEA.
-  User: greek
+  User: Quinten
   Date: 16/02/2021
-  Time: 15:14
+  Time: 16:25
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h2><% Student student = (Student) request.getAttribute( "result"); %>
-    <%= student.getNaam()%></h2>
+Niet gevonden
 </body>
 </html>

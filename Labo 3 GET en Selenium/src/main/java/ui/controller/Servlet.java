@@ -1,45 +1,40 @@
 package ui.controller;
 
+
 import domain.db.StudentDB;
 import domain.model.Student;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/StudentInfo")
 public class Servlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private StudentDB database = new StudentDB();
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
+        String voornaam = request.getParameter("name");
+        String famillienaam = request.getParameter("family_name");
+        Student result = database.FindStudent(voornaam,famillienaam);
+
+        request.setAttribute("result", result);
+        RequestDispatcher view;
+        if(result != null){
+            view = request.getRequestDispatcher("gevonden.jsp");
+        }
+        else{
+            view = request.getRequestDispatcher("nietgevonden.jsp");
+        }
+        view.forward(request,response);
 
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
-        out.println("<!DOCTYPE html>");
-        out.println("<head>");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-        out.println("<body>");
-
-
-        out.println("<p id='dynamisch'>");
-        out.println("Naam:");
-        String naam = request.getParameter("naam");
-        String voornaam = request.getParameter("voornaam");
-
-
-
-        out.println(naam);
-        out.println(voornaam);
-        out.println("</p>");
-        out.println("</body>");
-
-
-        out.println("</head>");
     }
 }

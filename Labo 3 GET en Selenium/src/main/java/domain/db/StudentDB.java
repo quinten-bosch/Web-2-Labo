@@ -5,7 +5,7 @@ import domain.model.Student;
 import java.util.ArrayList;
 
 public class StudentDB {
-    public static ArrayList<Student> students;
+    public ArrayList<Student> students;
     public StudentDB(){
         students = new ArrayList<>();
         Student greetje = new Student("Jongen", "Greetje", "Toegepaste Informatica", 23);
@@ -16,8 +16,13 @@ public class StudentDB {
         students.add(kristien);
         students.add(elke);
         students.add(jan);
-
     }
-
-
+    public Student FindStudent(String voornaam, String famillienaam){
+        for (Student s: students) {
+            if (s.getVoornaam().equals(voornaam) && s.getNaam().equals(famillienaam)) {
+                return s;
+            }
+        }
+        return null;
+    }
 }
