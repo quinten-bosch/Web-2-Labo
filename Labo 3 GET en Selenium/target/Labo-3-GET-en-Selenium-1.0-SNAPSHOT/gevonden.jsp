@@ -12,6 +12,11 @@
 </head>
 <body>
 <h2><% Student student = (Student) request.getAttribute( "result"); %>
-    <%= student.getNaam()%></h2>
+    <%= student.getNaam()%>
+    <%= student.getVoornaam()%>
+    <%= student.getLeeftijd()
+    <%= student.getStudierichting()%>
+    %>
+    </h2>
 </body>
 </html>
